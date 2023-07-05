@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct DetailView: View {
     @ObservedObject var presenter: DetailPresenter
@@ -46,7 +47,7 @@ extension DetailView {
     }
     
     var imageCategory: some View {
-        AsyncImage(url: URL(string: presenter.category.image)) { image in
+        CachedAsyncImage(url: URL(string: presenter.category.image)) { image in
             image.resizable()
         } placeholder: {
             ProgressView()

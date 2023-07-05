@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct CategoryRow: View {
     var category: CategoryModel
@@ -22,7 +23,7 @@ struct CategoryRow: View {
 
 extension CategoryRow {
     var imageCategory: some View {
-        AsyncImage(url: URL(string: category.image)) { image in
+        CachedAsyncImage(url: URL(string: category.image)) { image in
             image.resizable()
         } placeholder: {
             ProgressView()
