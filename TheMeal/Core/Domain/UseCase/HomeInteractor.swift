@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol HomeUseCase {
-    func getCategories(completion: @escaping(Result<[CategoryModel], Error>) -> Void)
+    func getCategories() -> Observable<[CategoryModel]>
 }
 
 class HomeInteractor: HomeUseCase {
@@ -18,9 +19,7 @@ class HomeInteractor: HomeUseCase {
         self.repository = repository
     }
     
-    func getCategories(completion: @escaping (Result<[CategoryModel], Error>) -> Void) {
-        repository.getCategories { result in
-            completion(result)
-        }
+    func getCategories() -> Observable<[CategoryModel]> {
+        repository.getCategories()
     }
 }
